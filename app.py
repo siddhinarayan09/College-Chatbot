@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, redirect, render_template_string
 import joblib
 import json
+import os
 
 app = Flask(__name__)
 
@@ -69,3 +70,6 @@ def chatbot_response():
     
 if __name__ == "__main__":
     app.run(debug=True)
+# Get the port from the environment variable, default to 5000 if not set
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
