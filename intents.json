@@ -15,19 +15,19 @@
     {
       "tag": "creator",
       "patterns": ["Who created you?", "Who is your developer?", "Who made you?"],
-      "responses": ["I was created by Roshan Sinha."],
+      "responses": ["I was created by Siddhi Narayan."],
       "context_set": ""
     },
     {
       "tag": "identity",
       "patterns": ["What is your name?", "What should I call you?", "Who are you?"],
-      "responses": ["You can call me Mind Reader. I'm a Chatbot."],
+      "responses": ["You can call me Skittl. I'm a Chatbot."],
       "context_set": ""
     },
     {
       "tag": "hours",
       "patterns": ["What are the college timings?", "When is the college open?", "What are your hours of operation?"],
-      "responses": ["The college is open from 8am to 5pm, Monday to Saturday."],
+      "responses": ["The college is open from 8am to 6pm, Monday to Friday. Though the timings might vary according to the respective departments."],
       "context_set": ""
     },
     {
@@ -39,19 +39,13 @@
     {
       "tag": "courses",
       "patterns": ["What courses are offered in the college?", "Can you tell me about the available courses?", "What are the branches in the college?"],
-      "responses": ["The college offers courses in Information Technology, Computer Engineering, Mechanical Engineering, Chemical Engineering, and Civil Engineering."],
+      "responses": ["The college offers courses in a variety of domain including Computer Science Engineering, Mechanical Engineering, Chemical Engineering, Civil Engineering, Industrial Design, Food Processing, etc."],
       "context_set": ""
     },
     {
       "tag": "fees",
       "patterns": ["How much is the college fee?", "Tell me about the fees", "What are the hostel fees?"],
       "responses": ["For detailed fee information, please visit our college website."],
-      "context_set": ""
-    },
-    {
-      "tag": "location",
-      "patterns": ["Where is the college located?", "What is the college address?", "How can I reach the college?"],
-      "responses": ["The college is located at [insert address]. You can find the location on Google Maps."],
       "context_set": ""
     },
     {
@@ -75,13 +69,13 @@
     {
       "tag": "library",
       "patterns": ["Does the college have a library?", "Where is the library located?", "What are the library timings?"],
-      "responses": ["Yes, the college has a library. The library is located [insert location]. The timings are from 9am to 5pm, Monday to Friday."],
+      "responses": ["Yes, the college has a library. The library is called as Biju Pattnaik Central Library. The timings are from 9am to 6pm, Monday to Friday."],
       "context_set": ""
     },
     {
       "tag": "facilities",
       "patterns": ["What facilities are available in the college?", "Tell me about the college facilities.", "Do you have a sports complex?"],
-      "responses": ["The college provides various facilities including a sports complex, labs, cafeteria, and a library."],
+      "responses": ["The college provides various facilities including a hostels, sports complex, labs, cafeteria, and a library."],
       "context_set": ""
     },
     {
@@ -129,13 +123,13 @@
     {
       "tag": "academics_majors",
       "patterns": ["What majors are popular?", "Which fields of study have a high enrollment?", "What are the most sought-after majors in your college?"],
-      "responses": ["Popular majors in our college include Computer Science, Business Administration, Psychology, Engineering, and Biology."],
+      "responses": ["Popular majors in our college include Computer Science, Mechanical Engineering, and Biomed."],
       "context_set": ""
     },
     {
       "tag": "academics_reputation",
       "patterns": ["What departments or programs have the best reputations?", "Which academic programs are well-regarded?", "Are there any standout departments in your college?"],
-      "responses": ["Our college has well-regarded departments in Computer Science, Engineering, and Business Administration. These programs have a strong reputation for academic excellence."],
+      "responses": ["Our college has well-regarded departments in Computer Science, Engineering, and Mechanical Engineering. These programs have a strong reputation for academic excellence."],
       "context_set": ""
     },
     {

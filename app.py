@@ -1,7 +1,13 @@
 from flask import Flask, request, jsonify, redirect, render_template_string
 import joblib
+import random
 import json
 import os
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+import nltk
+
 
 app = Flask(__name__)
 
@@ -12,6 +18,17 @@ vectorizer = joblib.load("vectorizer.pkl")
 # Load the intents file
 with open("intents.json", "r") as file:
     intents = json.load(file)
+
+#initialize NLTK components
+lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words("english"))
+
+#preprocess text to match the training data
+def preprocess_text(text):
+    text = text.lower()
+    words = word_tokenize(text)
+    words = [lemmatizer.lemmatize(w) for w in words if w not in stop_words and w.isalnum()]
+    return " ".join(words)
 
 @app.route("/", methods=["GET"])
 def index():
@@ -58,11 +75,32 @@ def chatbot_response():
         if not user_message:
             return jsonify({"responses": "No message provided"}), 400
         
+        processed_message = preprocess_text(user_message)
+        input_vector = vectorizer.transform([processed_message])
+
+        #predict intent and get confidence
+        predicted_tag = model.predict(input_vector)[0]
+        confidence_scores = model.predict_proba(input_vector)[0]
+        max_confidence = max(confidence_scores)
+
+        #confidence threshold
+        confidence_threshold = 0.75
+        if max_confidence < confidence_threshold:
+            return jsonify({"responses": "I'm not sure I understand. Could you rephrase your question?"})
+        
+        #match the prediction to the response in intents file
+        response_list = next()
+
         input_vector = vectorizer.transform([user_message])
         predicted_tag = model.predict(input_vector)[0]
 
         #Match prediction to response in intents file
-        response_text = next((intent["responses"] for intent in intents["intents"] if intent["tag"] == predicted_tag), "Sorry, I don't understand that.")
+        response_list = next(
+            (intent["responses"] for intent in intents["intents"] if intent["tag"] == predicted_tag), ["Sorry, I don't understand that."]
+            )
+        
+        #randomly choose one response
+        response_text = random.choice(response_list)
 
         return jsonify({"responses": response_text})
     except Exception as e:
